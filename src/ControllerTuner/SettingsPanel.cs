@@ -32,7 +32,7 @@ public class SettingsPanel : UserControl
             panel.Children.Add(box);
         }
 
-        Content = panel;
+        Content = new ScrollViewer { Content = panel, VerticalScrollBarVisibility = ScrollBarVisibility.Auto };
     }
 
     public static SettingsPanel ForStick(StickSettings s) => new(
@@ -53,11 +53,15 @@ public class SettingsPanel : UserControl
     public static SettingsPanel ForTriggers(Profile p) => new(
         new[]
         {
-            ("Trigger dead zone", nameof(Profile.TriggerDeadzone), 0.0, 0.5),
+            ("Trigger dead zone (activation point)", nameof(Profile.TriggerDeadzone), 0.0, 0.5),
+            ("Trigger max (full output at)", nameof(Profile.TriggerMax), 0.3, 1.0),
             ("Trigger sensitivity", nameof(Profile.TriggerSensitivity), 0.25, 2.0),
+            ("Vibration strength (0 = off)", nameof(Profile.Vibration), 0.0, 1.5),
+            ("Turbo speed (presses per second)", nameof(Profile.TurboRate), 4.0, 30.0),
         },
         new[]
         {
+            ("Hair trigger (full press once past dead zone)", nameof(Profile.DigitalTriggers)),
             ("Swap left and right sticks", nameof(Profile.SwapSticks)),
         }) { DataContext = p };
 }

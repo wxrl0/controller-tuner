@@ -1,7 +1,7 @@
 <Window x:Class="ControllerTuner.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Controller Tuner" Width="480" Height="640" MinWidth="420">
+        Title="Controller Tuner" Width="560" Height="760" MinWidth="520">
   <DockPanel Margin="12">
 
     <StackPanel DockPanel.Dock="Top">
@@ -16,9 +16,19 @@
         <Button DockPanel.Dock="Right" Content="Duplicate" Padding="8,2" Margin="4,0" Click="Duplicate_Click" />
         <ComboBox x:Name="ProfileBox" DisplayMemberPath="Name" SelectionChanged="ProfileBox_Changed" />
       </DockPanel>
-      <TextBox x:Name="NameBox" Margin="0,0,0,8" ToolTip="Profile name"
-               Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+
+      <StackPanel x:Name="ProfileHeader" Margin="0,0,0,8">
+        <TextBox ToolTip="Profile name" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+        <DockPanel Margin="0,6,0,0">
+          <TextBlock Text="Auto-switch for game (exe):" VerticalAlignment="Center" Margin="0,0,6,0" />
+          <TextBox ToolTip="Process name, e.g. cod or cod.exe"
+                   Text="{Binding GameExe, UpdateSourceTrigger=PropertyChanged}" />
+        </DockPanel>
+      </StackPanel>
+
       <CheckBox x:Name="BypassBox" Content="Bypass (send raw input, no tuning)" Click="Bypass_Click" />
+      <CheckBox x:Name="HotkeyBox" Content="Back + LB / RB switches profile" IsChecked="True"
+                Margin="0,4,0,0" Click="Hotkey_Click" />
     </StackPanel>
 
     <TextBlock x:Name="Live" DockPanel.Dock="Bottom" FontFamily="Consolas" Margin="0,8,0,0" />
@@ -26,7 +36,9 @@
     <TabControl Margin="0,10,0,0">
       <TabItem Header="Left stick"><ContentControl x:Name="LeftHost" Margin="10" /></TabItem>
       <TabItem Header="Right stick"><ContentControl x:Name="RightHost" Margin="10" /></TabItem>
-      <TabItem Header="Triggers / misc"><ContentControl x:Name="TrigHost" Margin="10" /></TabItem>
+      <TabItem Header="Triggers"><ContentControl x:Name="TrigHost" Margin="10" /></TabItem>
+      <TabItem Header="Buttons"><ContentControl x:Name="ButtonsHost" Margin="10" /></TabItem>
+      <TabItem Header="Macros"><ContentControl x:Name="MacrosHost" Margin="10" /></TabItem>
     </TabControl>
 
   </DockPanel>

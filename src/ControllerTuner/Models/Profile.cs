@@ -23,11 +23,25 @@ public class Profile : INotifyPropertyChanged
         set { _name = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name))); }
     }
 
+    /// <summary>Process name (e.g. "cod" or "cod.exe") that auto-selects this profile when focused.</summary>
+    public string GameExe { get; set; } = "";
+
     public StickSettings LeftStick { get; set; } = new();
     public StickSettings RightStick { get; set; } = new();
-    public double TriggerDeadzone { get; set; } = 0.05;
+
+    public double TriggerDeadzone { get; set; } = 0.05;   // activation point
+    public double TriggerMax { get; set; } = 1.0;         // full output reached here (trigger stop)
     public double TriggerSensitivity { get; set; } = 1.0;
+    public bool DigitalTriggers { get; set; }             // hair trigger
+
+    public double Vibration { get; set; } = 1.0;          // rumble strength, 0 = off
+    public double TurboRate { get; set; } = 12;           // presses per second
     public bool SwapSticks { get; set; }
+
+    // Replaced (never mutated) so the input thread can read them safely.
+    public Dictionary<string, string> ButtonMap { get; set; } = new();
+    public List<string> TurboButtons { get; set; } = new();
+    public List<Macro> Macros { get; set; } = new();
 
     public event PropertyChangedEventHandler? PropertyChanged;
 }

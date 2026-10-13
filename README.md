@@ -1,8 +1,18 @@
 # Controller Tuner
 
-Windows app that sits between your physical controller and a ViGEm virtual Xbox 360 pad.
-It applies per-profile dead zones, response curves, sensitivity, trigger tuning and
-stick swap/invert, and shows whether the ViGEmBus driver is available.
+Windows app that sits between your physical controller and a ViGEm virtual Xbox 360 pad,
+with GameSir-style tuning. Games see only the tuned virtual pad.
+
+## Features
+- ViGEmBus status light (missing / outdated / blocked / OK) and virtual pad slot detection
+- Per-stick inner/outer dead zone, anti dead zone, response curve, sensitivity, invert
+- Triggers: activation point, trigger stop (max), sensitivity, hair trigger (digital)
+- Button remap / disable, per-button turbo with adjustable speed
+- Macros: build sequences by typing steps or recording from your controller; trigger on press, while held, or as a toggle
+- Rumble pass-through from the game to your real pad, with strength slider
+- Profiles: duplicate, rename, delete; Back + LB / RB cycles profiles (hidden from the game)
+- Auto-switch profile when a game's process is focused (e.g. `cod`)
+- Bypass checkbox for raw pass-through
 
 ## Requirements
 - Windows 10/11
