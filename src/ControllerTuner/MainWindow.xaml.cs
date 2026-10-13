@@ -81,8 +81,7 @@ public partial class MainWindow : Window
     /// <summary>When the focused app changes, select the profile whose game exe matches it.</summary>
     void AutoSwitch()
     {
-        var fg = Foreground.ProcessName();
-        if (fg == null || fg == _lastForeground) return;
+var fg = ControllerTuner.Core.Foreground.ProcessName();        if (fg == null || fg == _lastForeground) return;
         _lastForeground = fg;
         string key = fg.ToLowerInvariant();
         var match = _profiles.FirstOrDefault(p => Norm(p.GameExe).Length > 0 && Norm(p.GameExe) == key);
