@@ -1,7 +1,7 @@
 # Controller Tuner
 
 Windows app that sits between your physical controller and a ViGEm virtual Xbox 360 pad,
-with GameSir-style tuning. Games see only the tuned virtual pad.
+Games see only the tuned virtual pad.
 
 ## Features
 - ViGEmBus status light (missing / outdated / blocked / OK) and virtual pad slot detection
